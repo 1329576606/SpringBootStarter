@@ -1,4 +1,4 @@
-package com.xzx.websocket.authorization;
+package cn.xzx.websocket.authorization;
 
 import com.corundumstudio.socketio.AuthorizationListener;
 import com.corundumstudio.socketio.HandshakeData;

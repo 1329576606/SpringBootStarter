@@ -1,4 +1,4 @@
-package com.xzx.websocket.configuration;
+package cn.xzx.websocket.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

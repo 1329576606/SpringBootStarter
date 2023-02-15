@@ -1,4 +1,4 @@
-package com.xzx.websocket.exception;
+package cn.xzx.websocket.exception;
 
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.listener.ExceptionListener;

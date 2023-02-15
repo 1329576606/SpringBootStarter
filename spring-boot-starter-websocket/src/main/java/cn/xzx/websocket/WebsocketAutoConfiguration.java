@@ -1,12 +1,12 @@
-package com.xzx.websocket;
+package cn.xzx.websocket;
 
+import cn.xzx.websocket.listener.Listener;
 import com.corundumstudio.socketio.AuthorizationListener;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ExceptionListener;
-import com.xzx.websocket.authorization.BaseAuthorizationListener;
-import com.xzx.websocket.configuration.WebsocketProperties;
-import com.xzx.websocket.exception.BaseExceptionListener;
-import com.xzx.websocket.listener.Listener;
+import cn.xzx.websocket.authorization.BaseAuthorizationListener;
+import cn.xzx.websocket.configuration.WebsocketProperties;
+import cn.xzx.websocket.exception.BaseExceptionListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

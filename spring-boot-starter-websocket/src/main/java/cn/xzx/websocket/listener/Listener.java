@@ -1,4 +1,4 @@
-package com.xzx.websocket.listener;
+package cn.xzx.websocket.listener;
 
 import com.corundumstudio.socketio.SocketIOServer;
 
