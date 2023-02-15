@@ -1,20 +1,20 @@
 package cn.xzx.websocket;
 
-import cn.xzx.websocket.listener.Listener;
-import com.corundumstudio.socketio.AuthorizationListener;
-import com.corundumstudio.socketio.SocketIOServer;
-import com.corundumstudio.socketio.listener.ExceptionListener;
 import cn.xzx.websocket.authorization.BaseAuthorizationListener;
 import cn.xzx.websocket.configuration.WebsocketProperties;
 import cn.xzx.websocket.exception.BaseExceptionListener;
+import com.corundumstudio.socketio.AuthorizationListener;
+import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
+import com.corundumstudio.socketio.listener.ExceptionListener;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PreDestroy;
-import java.util.List;
 
 /**
  * @author ：1329576606@qq.com
@@ -24,7 +24,7 @@ import java.util.List;
 @Configuration
 @EnableConfigurationProperties(WebsocketProperties.class)
 @Slf4j
-public class WebsocketAutoConfiguration {
+public class WebsocketAutoConfiguration implements CommandLineRunner {
     private SocketIOServer socketIOServer;
 
     @Bean
@@ -54,17 +54,25 @@ public class WebsocketAutoConfiguration {
     }
 
     @Bean
-    SocketIOServer socketIOServer(com.corundumstudio.socketio.Configuration configuration
-            , List<Listener> listeners) {
+    public SpringAnnotationScanner springAnnotationScanner(SocketIOServer socketServer) {
+        return new SpringAnnotationScanner(socketServer);
+    }
+
+    @Bean
+    SocketIOServer socketIOServer(com.corundumstudio.socketio.Configuration configuration) {
         socketIOServer = new SocketIOServer(configuration);
-        listeners.forEach(listener -> listener.listener(socketIOServer));
-        socketIOServer.start();
         return socketIOServer;
     }
 
     @PreDestroy
     public void shutDown() {
-        log.info("WebsocketShutDownHook...");
+        log.info("WebsocketShutDownHook......");
         socketIOServer.stop();
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("socketIOServer start......");
+        socketIOServer.start();
     }
 }
