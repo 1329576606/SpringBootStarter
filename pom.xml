@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
     <modules>
         <module>spring-boot-starter-websocket</module>
     </modules>
@@ -10,19 +9,44 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.11</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xzx</groupId>
-    <artifactId>spring-boot-starter</artifactId>
+    <artifactId>spring-boot-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringBootStarter</name>
     <description>SpringBootStarter</description>
+    <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>8</java.version>
+        <netty-socketio.version>1.7.19</netty-socketio.version>
+        <redisson.version>3.17.6</redisson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.property.path>.</project.property.path>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.corundumstudio.socketio</groupId>
+                <artifactId>netty-socketio</artifactId>
+                <version>${netty-socketio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
