@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date ：Created in 2023/2/15 14:37
  * @description：WebsocketProperties
  */
-@ConfigurationProperties(prefix = "xzx.websocket")
+@ConfigurationProperties(prefix = "server.websocket")
 @Data
 public class WebsocketProperties {
     private int port=9091;

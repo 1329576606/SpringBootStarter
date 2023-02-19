@@ -1,4 +1,4 @@
-package cn.xzx.demo.websocket;
+package cn.xzx.demo.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description：
  */
 @SpringBootApplication
-public class WebsocketDemo {
+public class WebTest {
     public static void main(String[] args) {
-        SpringApplication.run(WebsocketDemo.class, args);
+        SpringApplication.run(WebTest.class, args);
     }
 }

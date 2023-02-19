@@ -3,22 +3,22 @@
   "hints": [],
   "properties": [
     {
-      "name": "xzx.websocket.port",
+      "name": "server.websocket.port",
       "type": "java.lang.Integer",
       "description": "9091"
     },
     {
-      "name": "xzx.websocket.maxFramePayloadLength",
+      "name": "server.websocket.maxFramePayloadLength",
       "type": "java.lang.Integer",
       "description": "64 * 1024"
     },
     {
-      "name": "xzx.websocket.pingTimeout",
+      "name": "server.websocket.pingTimeout",
       "type": "java.lang.Integer",
       "description": "60000"
     },
     {
-      "name": "xzx.websocket.pingInterval",
+      "name": "server.websocket.pingInterval",
       "type": "java.lang.Integer",
       "description": "25000"
     }

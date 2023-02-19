@@ -4,21 +4,23 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>spring-boot-starter-websocket</module>
+        <module>spring-boot-starter-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.11</version>
+        <version>3.0.2</version>
     </parent>
     <groupId>cn.xzx</groupId>
     <artifactId>spring-boot-framework</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${version}</version>
     <name>SpringBootStarter</name>
     <description>SpringBootStarter</description>
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>8</java.version>
+        <version>0.0.1-SNAPSHOT</version>
+        <java.version>17</java.version>
         <netty-socketio.version>1.7.19</netty-socketio.version>
         <redisson.version>3.17.6</redisson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
