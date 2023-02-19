@@ -1,4 +1,4 @@
-package cn.xzx.configuration;
+package cn.xzx.web.configuration;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

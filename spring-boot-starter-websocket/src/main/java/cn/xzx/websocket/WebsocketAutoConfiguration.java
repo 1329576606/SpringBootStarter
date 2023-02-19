@@ -7,8 +7,8 @@ import com.corundumstudio.socketio.AuthorizationListener;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
 import com.corundumstudio.socketio.listener.ExceptionListener;
-import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(WebsocketProperties.class)
 @Slf4j
-public class WebsocketAutoConfiguration implements CommandLineRunner {
+public class WebsocketAutoConfiguration implements CommandLineRunner, DisposableBean {
     private SocketIOServer socketIOServer;
 
     @Bean
@@ -63,15 +63,15 @@ public class WebsocketAutoConfiguration implements CommandLineRunner {
         return socketIOServer;
     }
 
-    @PreDestroy
-    public void shutDown() {
-        log.info("WebsocketShutDownHook......");
-        socketIOServer.stop();
-    }
-
     @Override
     public void run(String... args) {
         log.info("socketIOServer start......");
         socketIOServer.start();
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        log.info("WebsocketShutDownHook......");
+        socketIOServer.stop();
     }
 }
