@@ -8,8 +8,6 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
 import com.corundumstudio.socketio.listener.ExceptionListener;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(WebsocketProperties.class)
 @Slf4j
-public class WebsocketAutoConfiguration implements CommandLineRunner, DisposableBean {
+public class WebsocketAutoConfiguration {
     private SocketIOServer socketIOServer;
 
     @Bean
@@ -53,25 +51,18 @@ public class WebsocketAutoConfiguration implements CommandLineRunner, Disposable
     }
 
     @Bean
-    public SpringAnnotationScanner springAnnotationScanner(SocketIOServer socketServer) {
-        return new SpringAnnotationScanner(socketServer);
-    }
-
-    @Bean
     SocketIOServer socketIOServer(com.corundumstudio.socketio.Configuration configuration) {
         socketIOServer = new SocketIOServer(configuration);
         return socketIOServer;
     }
 
-    @Override
-    public void run(String... args) {
-        log.info("socketIOServer start......");
-        socketIOServer.start();
+    @Bean
+    SocketServer socketServer(SocketIOServer socketIOServer){
+        return new SocketServer(socketIOServer);
     }
 
-    @Override
-    public void destroy() throws Exception {
-        log.info("WebsocketShutDownHook......");
-        socketIOServer.stop();
+    @Bean
+    public SpringAnnotationScanner springAnnotationScanner(SocketIOServer socketServer) {
+        return new SpringAnnotationScanner(socketServer);
     }
 }

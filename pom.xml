@@ -21,12 +21,16 @@
     <packaging>pom</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.property.path>.</project.property.path>
         <version>0.0.1-SNAPSHOT</version>
         <java.version>17</java.version>
         <netty-socketio.version>1.7.19</netty-socketio.version>
         <redisson.version>3.17.6</redisson.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.property.path>.</project.property.path>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <fastjson2.version>2.0.23</fastjson2.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +49,26 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
