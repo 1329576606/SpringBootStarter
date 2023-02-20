@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
+        <module>spring-boot-core</module>
         <module>spring-boot-starter-websocket</module>
         <module>spring-boot-starter-web</module>
         <module>spring-boot-starter-security</module>
@@ -30,6 +31,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>cn.xzx</groupId>
+                <artifactId>spring-boot-core</artifactId>
+                <version>${version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.corundumstudio.socketio</groupId>
                 <artifactId>netty-socketio</artifactId>
